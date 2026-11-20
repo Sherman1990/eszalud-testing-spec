@@ -10,18 +10,9 @@ public class Paciente {
 
     public Paciente(String documento, String nombres, String apellidos,
                     String telefono, String correo) {
-        if (documento == null) {
-            throw new IllegalArgumentException("El documento es obligatorio");
-        }
-        if (nombres == null) {
-            throw new IllegalArgumentException("Los nombres son obligatorios");
-        }
-        if (apellidos == null) {
-            throw new IllegalArgumentException("Los apellidos son obligatorios");
-        }
-        this.documento = documento;
-        this.nombres = nombres;
-        this.apellidos = apellidos;
+        this.documento = Validaciones.requerido(documento, "El documento");
+        this.nombres = Validaciones.requerido(nombres, "Los nombres");
+        this.apellidos = Validaciones.requerido(apellidos, "Los apellidos");
         this.telefono = telefono;
         this.correo = correo;
     }
