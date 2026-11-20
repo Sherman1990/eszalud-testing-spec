@@ -67,4 +67,29 @@ class CitaMedicaTest {
 
         assertEquals(EstadoCita.PROGRAMADA, cita.getEstado());
     }
+
+    @Test
+    @DisplayName("Conservar el estado válido recibido")
+    void shouldKeepValidStatus() {
+        CitaMedica cita = new CitaMedica(
+                "PAC-1", "DOC-1", "ESP-1", FECHA, "Control", EstadoCita.ATENDIDA);
+
+        assertEquals(EstadoCita.ATENDIDA, cita.getEstado());
+    }
+
+    @Test
+    @DisplayName("Verificar los atributos de la cita después de construirla")
+    void shouldKeepAppointmentAttributesAfterConstruction() {
+        LocalDateTime fecha = LocalDateTime.of(2027, 1, 15, 14, 0);
+        CitaMedica cita = new CitaMedica(
+                "PAC-9", "DOC-9", "ESP-9", fecha, "Chequeo general",
+                EstadoCita.CANCELADA);
+
+        assertEquals("PAC-9", cita.getPaciente());
+        assertEquals("DOC-9", cita.getDoctor());
+        assertEquals("ESP-9", cita.getEspecialidad());
+        assertEquals(fecha, cita.getFechaHora());
+        assertEquals("Chequeo general", cita.getMotivo());
+        assertEquals(EstadoCita.CANCELADA, cita.getEstado());
+    }
 }
