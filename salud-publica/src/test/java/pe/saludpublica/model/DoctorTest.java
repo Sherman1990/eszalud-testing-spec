@@ -21,11 +21,17 @@ class DoctorTest {
         assertEquals("ESP-001", doctor.getEspecialidad());
     }
 
-
     @Test
     @DisplayName("Rechazar la creación de un doctor sin documento")
     void shouldRejectDoctorWithoutDocument() {
         assertThrows(IllegalArgumentException.class,
                 () -> new Doctor(null, "Carlos", "Ramírez", "CMP-12345", "ESP-001"));
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de un doctor sin nombres")
+    void shouldRejectDoctorWithoutFirstName() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Doctor("11223344", null, "Ramírez", "CMP-12345", "ESP-001"));
     }
 }
