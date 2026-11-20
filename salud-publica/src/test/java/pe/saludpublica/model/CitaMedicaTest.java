@@ -42,4 +42,12 @@ class CitaMedicaTest {
                 () -> new CitaMedica("PAC-1", null, "ESP-1", FECHA,
                         "Control", EstadoCita.PROGRAMADA));
     }
+
+    @Test
+    @DisplayName("Rechazar la creación de una cita sin especialidad")
+    void shouldRejectAppointmentWithoutSpecialty() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new CitaMedica("PAC-1", "DOC-1", null, FECHA,
+                        "Control", EstadoCita.PROGRAMADA));
+    }
 }
