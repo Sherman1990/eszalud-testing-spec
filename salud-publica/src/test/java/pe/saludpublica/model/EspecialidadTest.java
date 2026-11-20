@@ -24,4 +24,13 @@ class EspecialidadTest {
         assertThrows(IllegalArgumentException.class,
                 () -> new Especialidad(null, "Enfermedades del corazón"));
     }
+
+    @Test
+    @DisplayName("Verificar los atributos de la especialidad después de construirla")
+    void shouldKeepSpecialtyAttributesAfterConstruction() {
+        Especialidad especialidad = new Especialidad("Pediatría", "Atención infantil");
+
+        assertEquals("Pediatría", especialidad.getNombre());
+        assertEquals("Atención infantil", especialidad.getDescripcion());
+    }
 }
