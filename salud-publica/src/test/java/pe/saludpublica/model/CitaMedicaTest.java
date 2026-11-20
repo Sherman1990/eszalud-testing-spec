@@ -58,4 +58,13 @@ class CitaMedicaTest {
                 () -> new CitaMedica("PAC-1", "DOC-1", "ESP-1", null,
                         "Control", EstadoCita.PROGRAMADA));
     }
+
+    @Test
+    @DisplayName("Asignar el estado PROGRAMADA cuando el estado recibido es null")
+    void shouldDefaultToScheduledWhenStatusIsNull() {
+        CitaMedica cita = new CitaMedica(
+                "PAC-1", "DOC-1", "ESP-1", FECHA, "Control", null);
+
+        assertEquals(EstadoCita.PROGRAMADA, cita.getEstado());
+    }
 }
