@@ -26,4 +26,12 @@ class CitaMedicaTest {
         assertEquals("Dolor de cabeza", cita.getMotivo());
         assertEquals(EstadoCita.PROGRAMADA, cita.getEstado());
     }
+
+    @Test
+    @DisplayName("Rechazar la creación de una cita sin paciente")
+    void shouldRejectAppointmentWithoutPatient() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new CitaMedica(null, "DOC-1", "ESP-1", FECHA,
+                        "Control", EstadoCita.PROGRAMADA));
+    }
 }
